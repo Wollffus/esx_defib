@@ -18,11 +18,10 @@ AddEventHandler('esx_ambulancejob:revive', function(playerId)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     if xPlayer and xPlayer.job.name == 'ambulance' then
-        local xTarget = ESX.GetPlayerFromId(playerId)```
+        local xTarget = ESX.GetPlayerFromId(playerId)
 
 **replace the above line with the below line** 
 
-```
 RegisterServerEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(target)
     local xPlayer = ESX.GetPlayerFromId(source)
