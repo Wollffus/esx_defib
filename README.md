@@ -14,7 +14,8 @@ INSERT INTO `items` (`id`, `name`, `label`, `limit`, `rare`, `can_remove`) VALUE
 HOW TO ADJUST AMBULANCE JOB SERVER.LUA:
 **Open esx_ambulancejob>server>main/lua and find this** 
 
-```lua
+```
+lua
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -24,12 +25,13 @@ AddEventHandler('esx_ambulancejob:revive', function(playerId)
 
 **replace the above line with the below line** 
 
+```lua
 RegisterServerEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(target)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     xPlayer.addMoney(Config.ReviveReward)
     TriggerClientEvent('esx_ambulancejob:revive', target)
-end)
+end)```
 
 You are done, everyday citizens(non medics) can now use the defib and revive downed players
