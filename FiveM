@@ -1,0 +1,41 @@
+local defibItemName = 'defib'
+
+local function useDefib()
+    local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+                            
+    if closestPlayer == -1 or closestDistance > 3.0 then
+        ESX.ShowNotification("No players")
+    else
+        ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty)
+            if qtty > 0 then
+                local closestPlayerPed = GetPlayerPed(closestPlayer)
+                local health = GetEntityHealth(closestPlayerPed)
+                
+                if health == 0 then
+                    local playerPed = GetPlayerPed(-1)
+                    
+                    ESX.ShowNotification("Reviving")
+                    TaskStartScenarioInPlace(playerPed, 'CODE_HUMAN_MEDIC_TEND_TO_DEAD', 0, true)
+                    Citizen.Wait(10000)
+                    ClearPedTasks(playerPed)
+                    
+                    TriggerServerEvent('esx_ambulancejob:removeItem',defibItemName)
+                    TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
+                else
+                    ESX.ShowNotification("Not dead")
+                end
+            else
+                ESX.ShowNotification("No defib")
+            end
+        end, defibItemName)
+    end
+end
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        if(IsControlJustReleased(1, 51))then
+            useDefib()
+        end
+    end
+end)
