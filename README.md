@@ -11,11 +11,8 @@ run this in your database sql query and adjust to your server limits
 
 INSERT INTO `items` (`id`, `name`, `label`, `limit`, `rare`, `can_remove`) VALUES (NULL, 'defib', 'Defibrillator', '-1', '0', '1');
 
-HOW TO ADJUST AMBULANCE JOB SERVER.LUA:
-**Open esx_ambulancejob>server>main/lua and find this** 
-
-```
-lua
+HOW TO ADJUST AMBULANCE JOB SERVER.LUA
+```**Open esx_ambulancejob>server>main/lua and find this** 
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -25,7 +22,7 @@ AddEventHandler('esx_ambulancejob:revive', function(playerId)
 
 **replace the above line with the below line** 
 
-```lua
+```
 RegisterServerEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(target)
     local xPlayer = ESX.GetPlayerFromId(source)
