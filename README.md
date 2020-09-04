@@ -6,7 +6,7 @@ Requirements
 -esx_ambulancejob
 -add defib's to your db
 
-Open the defibrillator repitory attached to this, copy that code into your client side ambulance job 
+Open the defibrillator respitory attached to this, copy that code into your client side ambulance job 
 
 HOW TO ADD DEFIB TO DB:
 run this in your database sql query and adjust to your server limits 
