@@ -14,12 +14,13 @@ INSERT INTO `items` (`id`, `name`, `label`, `limit`, `rare`, `can_remove`) VALUE
 HOW TO ADJUST AMBULANCE JOB SERVER.LUA:
 **Open esx_ambulancejob>server>main/lua and find this** 
 
+```lua
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     if xPlayer and xPlayer.job.name == 'ambulance' then
-        local xTarget = ESX.GetPlayerFromId(playerId)
+        local xTarget = ESX.GetPlayerFromId(playerId)```
 
 **replace the above line with the below line** 
 
